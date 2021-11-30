@@ -1,12 +1,13 @@
 
 package ie.vita.StacksAndQueues;
 
-public class StackUsingArray {
+public class StackUsingArray<Item> {
 	private int N;
-	private String[] s; 
+	private Item[] s; 
 
+	@SuppressWarnings("unchecked")
 	StackUsingArray(int capacity) {
-		s = new String[capacity];
+		s = (Item[]) new Object[capacity];
 		N = 0;
 	}
 	
@@ -15,18 +16,18 @@ public class StackUsingArray {
 		return (N  == 0);
 	}
 	
-	public void push(String item) {
+	public void push(Item item) {
 		s[N] = item;
 		N = N+1;
 	}
 	
-	public String pop() throws EmptyArrayException {
+	public Item pop() throws EmptyArrayException {
 		if (isEmpty()) {
 			throw new EmptyArrayException();
 		}
 		
 		N = N-1;
-		String item = s[N];
+		Item item = s[N];
 		s[N] = null; //to avoid loitering
 		return item;
 	}

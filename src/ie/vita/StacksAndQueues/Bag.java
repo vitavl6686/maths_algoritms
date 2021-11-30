@@ -1,16 +1,16 @@
 /* This class provides an implementation
- * of a stack via Linked List (generic)
+ * of a bag via Linked List
  * 
+ * Bag is a structure for keeping items without order.
  * Use:
- * StackUsingLinkedList<Item> stack = new StackUsinglinkedList<>()
- * 
- */
+ * Bag<Item> bag = new Bag<>();
+ *  
+ * */
 
 package ie.vita.StacksAndQueues;
 import java.util.Iterator;
 
-
-public class StackUsingLinkedList<Item> implements Iterable<Item> {
+public class Bag<Item> implements Iterable<Item> {
 	Node first = null;
 	
 	private class Node {
@@ -18,33 +18,20 @@ public class StackUsingLinkedList<Item> implements Iterable<Item> {
 		Node next;
 	}
 	
-	/* Returns BOOLEAN
-	 * is this stack empty
+	/*Returns BOOLEAN
+	 * is this bag empty
 	 * Use:
-	 * stack.isEmpty();
+	 * bag.isEmpty();
 	 * */
 	public boolean isEmpty() {
 		return (first == null);
 	}
 
-	/* Returns Item
-	 * Returns the last element of the stack
-	 * And removes it
-	 * Use:
-	 * stack.pop();
-	 * */
-	public Item pop() {
-		Item item = first.item;
-		first = first.next;
-		return item;
-	}
-	
 	/* Returns NOTHING
-	 * Add element to the stack
+	 * Add the item to the bag
 	 * Use:
-	 * stack.push(element);
+	 * bag.push(item);
 	 * */
-	
 	public void push(Item item) {
 		Node oldFirst = first;
 		first = new Node();
@@ -55,10 +42,10 @@ public class StackUsingLinkedList<Item> implements Iterable<Item> {
 
 	@Override
 	public Iterator<Item> iterator() {
-		return new ListIterator();
+		return new BagIterator();
 	}
 	
-	private class ListIterator implements Iterator<Item>{
+	private class BagIterator implements Iterator<Item>{
 		Node current = first;
 		
 		@Override
@@ -79,3 +66,5 @@ public class StackUsingLinkedList<Item> implements Iterable<Item> {
 		
 	}
 }
+
+

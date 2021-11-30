@@ -1,31 +1,35 @@
 /* This class provides an implementation
- * of a stack via resizing array
+ * of a stack via resizing array. 
  * 
- * StackUsingResizingArray stack = new StackUsingResizingArray();
- * 
- * stack.push(string) adds string to the stack.
- * returns NOTHING
- * 
- * stack.pop() deletes the last item, return it.
- * Returns the last item (String)
- * 
- * stack.isEmpty() returns BOOLEAN (is this stack empty)
- * 
- *  
+ * StackUsingResizingArray<Item> stack = new StackUsingResizingArray<>();
  * */
 
 package ie.vita.StacksAndQueues;
 
-public class StackUsingResizingArray {
+import java.util.Iterator;
 
-	private String[] s = new String[1];
+public class StackUsingResizingArray <Item> implements Iterable<Item> {
+	
+	@SuppressWarnings("unchecked")
+	private Item[] s = (Item[]) new Object[1];
 	private int N = 0;
 	
+	/* Returns BOOLEAN 
+	 * is this stack empty
+	 * Use:
+	 * stack.isEmpty();
+	 *  */
 	public boolean isEmpty() {
 		return N == 0;
 	}
 	
-	public void push(String str) {
+	/* Returns NOTHING
+	 * Add an item into the stack
+	 * Use:
+	 * stack.push(item);
+	 * */
+	
+	public void push(Item str) {
 		if (N == s.length) {
 			resize(N*2);
 		}
@@ -33,7 +37,14 @@ public class StackUsingResizingArray {
 		N += 1;
 	}
 	
-	public String pop() throws EmptyArrayException {
+	/* Returns Item
+	 * Returns the last element of the stack
+	 * And deletes it
+	 * Use:
+	 * stack.pop();
+	 * */
+	
+	public Item pop() throws EmptyArrayException {
 		if (isEmpty()) {
 			throw new EmptyArrayException();
 		}
@@ -43,19 +54,43 @@ public class StackUsingResizingArray {
 		}
 		
 		N = N - 1;
-		String item = s[N];
+		Item item = s[N];
 		s[N] = null;
 		return item;
 	}
 	
+	
 	private void resize(int capacity) {
-		String[] copy = new String[capacity];
+		@SuppressWarnings("unchecked")
+		Item[] copy = (Item[]) new Object[capacity];
 		for (int i = 0 ; i < N; i++) {
 			copy[i] = s[i];
 		}	
 		s = copy;
 	}
-	
-	
 
+	@Override
+	public Iterator<Item> iterator() {
+		return new ArrayIterator();
+	}
+	
+	private class ArrayIterator implements Iterator<Item> {
+		int index = N-1;
+		@Override
+		public boolean hasNext() {
+			return index >= 0;
+		}
+
+		@Override
+		public Item next() {
+			if (!this.hasNext()) {
+				throw new NoNextElementException();
+			}
+			Item data = s[index];
+			index -= 1;
+			return data;
+		}
+		
+	}
+	
 }
