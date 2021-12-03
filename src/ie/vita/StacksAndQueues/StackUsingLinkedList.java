@@ -34,6 +34,9 @@ public class StackUsingLinkedList<Item> implements Iterable<Item> {
 	 * stack.pop();
 	 * */
 	public Item pop() {
+		if(this.isEmpty()) {
+			throw new NoNextElementException();
+		}
 		Item item = first.item;
 		first = first.next;
 		return item;
