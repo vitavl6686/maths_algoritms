@@ -1,4 +1,4 @@
-/*This class implements RandomizedQueue
+/* This class implements RandomizedQueue
  * It's a regular queue, but a dequeue operation returns
  * and removed a random element from the queue.
  * Generic, Iterable.
@@ -32,8 +32,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		randomizer = new Random(date.getTime());
 	}
 	
-	public static void main(String[] args) {}
-	
 	/* Returns BOOLEAN
 	 * is this queue empty
 	 * Use:
@@ -54,7 +52,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		}
 		
 		if (current == mainArray.length) {
-			resize(current*2);
+			resize(current * 2);
 		}
 		mainArray[current] = item;
 		current += 1;
@@ -140,7 +138,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 				throw new java.util.NoSuchElementException();
 			}
 			Item item = mainArray[arr[i]];
-			i+=1;
+			i += 1;
 			return item;
 		}
 		

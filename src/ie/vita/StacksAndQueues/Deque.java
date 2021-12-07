@@ -22,10 +22,6 @@ public class Deque <Item> implements Iterable<Item> {
 		Node previous;
 	}
 	
-	public static void main(String[] args) {
-		
-	}
-	
 	/* Returns BOOLEAN
 	 * is this deque empty
 	 * Use:
