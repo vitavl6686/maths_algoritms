@@ -7,6 +7,7 @@ public class InsertionSort {
 		int n = arr.length;
 		for (int i = 0; i < n; i++) {
 			for (int j = i; i > 0; j--) {
+
 				if (SortingMethod.less(arr[j], arr[j-1])) {
 					SortingMethod.exchange(arr, j, j-1);
 				}
