@@ -1,5 +1,6 @@
 package ie.vita.Assignment;
 
+
 import java.util.Comparator;
 
 public class Point {
@@ -55,7 +56,6 @@ public class Point {
     	}
     	else {
     		if (this.y == that.y) {
-    			System.out.println("yes");
     			return +0.0;
     		}
     		else {
@@ -132,9 +132,10 @@ public class Point {
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        Point[] points = new Point[] {new Point(0,1), new Point(0,2), new Point(0,3), new Point(0,4)};
-        BruteCollinearPoints bcp = new BruteCollinearPoints(points);
-        System.out.println(bcp.numberOfSegments());
+      Point[] points = new Point[]{new Point(0, 2),new Point(0, 3) ,new Point(1, 7), new Point(0, 0), new Point(0, 7)};
+      FastCollinearPoints fcp = new FastCollinearPoints(points);
+      System.out.println(fcp.numberOfSegments());
+        
     }
     
 
