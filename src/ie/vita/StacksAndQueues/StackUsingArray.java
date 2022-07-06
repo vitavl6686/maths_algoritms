@@ -3,7 +3,7 @@ package ie.vita.StacksAndQueues;
 
 public class StackUsingArray<Item> {
 	private int N;
-	private Item[] s; 
+	public Item[] s; 
 
 	@SuppressWarnings("unchecked")
 	StackUsingArray(int capacity) {
@@ -32,4 +32,5 @@ public class StackUsingArray<Item> {
 		return item;
 	}
 	
+
 }
